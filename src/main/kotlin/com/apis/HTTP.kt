@@ -14,6 +14,6 @@ import org.slf4j.event.*
 
 fun Application.configureHTTP() {
     routing {
-        swaggerUI(path = "openapi")
+       // swaggerUI(path = "openapi")
     }
 }

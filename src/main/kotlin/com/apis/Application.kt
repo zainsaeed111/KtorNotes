@@ -1,5 +1,6 @@
 package com.apis
 
+import com.apis.Routing.notesRouting
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
@@ -11,4 +12,6 @@ fun Application.module() {
     configureMonitoring()
     configureSerialization()
     configureRouting()
+    notesRouting()
+
 }

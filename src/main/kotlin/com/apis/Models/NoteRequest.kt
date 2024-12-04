@@ -1,3 +1,9 @@
 package com.apis.Models
 
-data class NoteRequest()
+import kotlinx.serialization.Serializable
+
+
+@Serializable
+data class NoteRequest(
+    val noteText: String,
+)

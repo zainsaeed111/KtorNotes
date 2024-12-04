@@ -1,5 +1,6 @@
 package com.apis
 
+import com.apis.Routing.notesRouting
 import com.fasterxml.jackson.databind.*
 import io.ktor.serialization.gson.*
 import io.ktor.serialization.jackson.*
@@ -16,6 +17,10 @@ fun Application.configureRouting() {
     routing {
         get("/") {
             call.respondText("Hello World!")
+
+
         }
+
+
     }
 }
