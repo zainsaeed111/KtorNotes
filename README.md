@@ -26,50 +26,59 @@ Ensure the following tools are installed on your system:
 
 
 
-2-Configure MySQL Database: Create the necessary database and tables:
-
-db {
-  url = "jdbc:mysql://localhost:3306/notes_db"
-  user = "root"
-  password = "password"
-}
-
+2. Configure MySQL Database:
+Create the necessary database and tables by executing the following SQL queries in your MySQL database:
 CREATE DATABASE notes_db;
 USE notes_db;
 
--- Create tables
+-- Create users table
 CREATE TABLE users (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(255),
-  password VARCHAR(255)
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
 
+-- Create notes table
 CREATE TABLE notes (
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT,
   content TEXT,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
+Update your application.conf file with the correct database connection details:
+
+db {
+  url = "jdbc:mysql://localhost:3306/notes_db"
+  user = "root"
+  password = "your_password"
+}
+
+
 
 
 3. Build and Run the Project: To build and run the project:
 ./gradlew run
 
-4. Access the API: The server will be running locally at http://localhost:8080. You can use tools like Postman or Curl to interact with the API:
+4. Access the API:
+Once the server is running, the API will be available at http://localhost:8080. You can interact with it using Postman, Curl, or any HTTP client.
+API Endpoints:
 
-Add-Notes
-->POST /AddNotes
+1. Add a Note
+POST /AddNotes
 Body: { "title": "Sample Note", "content": "This is a sample note." }
 
-Update-Notes
+2. Update a Note
 PUT /UpdateNotes/{id}
 Body: { "title": "Updated Title", "content": "Updated content." }
 
-Get-Notes
-->GET /GetNotes
+3. Get All Notes
+GET /GetNotes
 
-Delete-Notes
-->Delete  /DeleteNotes/{id}
+4.Delete a Note
+DELETE /DeleteNotes/{id}
+
+
+
 
 ##Tech Stack
 Kotlin: Programming language.
